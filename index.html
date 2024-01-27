@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <h2>BMI Calculator</h2>
+    <form id="bmiForm">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" required>
+        <br><br>
+        <label for="height">Height (meters):</label>
+        <input type="number" id="height" step="0.01" required>
+        <br><br>
+        <input type="submit" value="Calculate BMI">
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function bmi(weight, height) {
+            var calcBmi = Math.round(weight / (height ** 2));
+            return calcBmi;
+        }
+
+        document.getElementById('bmiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value);
+
+            var myBmi = bmi(weight, height);
+            document.getElementById('result').innerText = 'Your BMI is: ' + myBmi;
+        });
+    </script>
+</body>
+</html>
